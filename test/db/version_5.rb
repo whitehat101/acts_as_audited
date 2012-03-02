@@ -14,5 +14,9 @@ ActiveRecord::Schema.define do
     t.column :association_id, :integer
     t.column :association_type, :string
   end
+
+  add_index :audits, [:auditable_id, :auditable_type], :name => 'auditable_index'
+  add_index :audits, [:user_id, :user_type], :name => 'user_index'
+  add_index :audits, :created_at
 end
 

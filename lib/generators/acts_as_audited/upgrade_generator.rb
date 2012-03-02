@@ -56,6 +56,8 @@ module ActsAsAudited
 
         if columns.include?( 'association_id' )
           yield :rename_association_to_associated
+        unless columns.include?( 'tag' )
+          yield :add_tag_to_audits
         end
       end
     end
